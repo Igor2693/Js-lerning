@@ -1,31 +1,20 @@
 'use strict';
 
-let title = ' первый урок';
-let screens = 1;
-let screenPrice = 2;
 let rollback = 10;
-let adaptive = 5;
 
 const showTypeOf = function(variable) {
   console.log(variable, typeof variable)
 }
 
 
-title = prompt('Как называется ваш проект?');
-console.log(title);
+const titleProject = prompt('Как называется ваш проект?');
 
-screens = prompt('Какие типы экранов нужно разработать?', 'Простые, Сложные, Интерактивные');
-console.log(screens);
+const screens = prompt('Какие типы экранов нужно разработать?', 'Простые, Сложные, Интерактивные');
 
-screenPrice = +prompt('Сколько будет стоить данная работа?', 12000);
-console.log(screenPrice);
+const screenPrice = +prompt('Сколько будет стоить данная работа?', 12000);
 
-adaptive = prompt('Нужен ли адаптив на сайте?', 'Да/Нет'); 
-  if (adaptive == 'Да') {
-    console.log(true);
-  } else if (adaptive == 'Нет') {
-    console.log(false);
-  }
+const adaptive = confirm('Нужен ли адаптив на сайте?'); 
+  console.log(adaptive)
 
 let service1 = prompt('Какой дополнительный тип услуги нужен?');
 let servicePrice1 = +prompt('Сколько это будет стоить?');
@@ -45,8 +34,8 @@ const getRollbackMessage = function() {
 }
 
 // Задание 1
-const getAllServicePrices = function(a, b) {
-  return a + b
+const getAllServicePrices = function(price1, price2) {
+  return price1 + price2
 }
 const allServicePrices = getAllServicePrices(servicePrice1, servicePrice2);
 
@@ -58,9 +47,9 @@ const fullPrice = getFullPrice(screenPrice, allServicePrices);
 
 // Задание 3
 const getTitle = function() {
-  return  title.trim()[0].toUpperCase() + title.trim().slice(1).toLocaleLowerCase();
+  return  titleProject.trim()[0].toUpperCase() + titleProject.trim().slice(1).toLocaleLowerCase();
 }
-title = getTitle();
+const title = getTitle();
 
 // Задание 4
 const getServicePercentPrices = function() {
@@ -82,6 +71,3 @@ console.log(screens.length);
 
 console.log(getRollbackMessage())
 console.log(getServicePercentPrices())
-
-
-
