@@ -18,13 +18,8 @@ const appData = {
     appData.fullPrice = appData.getFullPrice();
     appData.servicePercentPrice = appData.getServicePercentPrices()
     appData.title = appData.getTitle();
-    appData.logger()
-  },
 
-  logger: function () {
-    for (let key in appData) {
-      console.log('Ключ:' + key + ' ' + 'Значение:' +  appData[key])
-    }
+    appData.logger()
   },
 
   asking: function () {
@@ -74,7 +69,13 @@ const appData = {
     } else {
       return 'Что то пошло не так'
     }  
-  }
+  },
+
+  logger: function () {
+    for (let key in appData) {
+      console.log('Ключ:' + key + ' ' + 'Значение:' +  appData[key])
+    }
+  },
   
 }
 
