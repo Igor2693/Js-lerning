@@ -109,30 +109,23 @@ appData.start()
 
 // Задание 01
 const newTitle = document.getElementsByTagName('h1');
-console.log(newTitle[0]);
 
 // Задание 02
 const buttons = document.getElementsByClassName('handler_btn')
-console.log(buttons)
 
 // Задание 03
 const buttonX = document.querySelector('.screen-btn')
-console.log(buttonX)
 
 // Задание 04
 const items1 = document.querySelectorAll('.other-items.percent')
-console.log(items1)
 
 const items2 = document.querySelectorAll('.other-items.number')
-console.log(items2)
 
 // Задание 05
 const inputScreens = document.querySelector('.rollback input')
-console.log(inputScreens)
 
 // Задание 06
 const spanRange = document.querySelector('.rollback .range-value')
-console.log(spanRange)
 
 // Задание 07
   for (let i = 0; i < 5; i++) {
@@ -142,4 +135,12 @@ console.log(spanRange)
 
   // Задание 08
   let screenBlock = document.querySelectorAll('.screen')
-  console.log(screenBlock)
+
+  console.log(newTitle[0]);
+  console.log(buttons);
+  console.log(buttonX);
+  console.log(items1);
+  console.log(items2);
+  console.log(inputScreens);
+  console.log(spanRange);
+  console.log(screenBlock);
