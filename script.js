@@ -1,5 +1,34 @@
 'use strict';
 
+const newTitle = document.getElementsByTagName('h1');
+
+// Задание 02
+const buttons = document.getElementsByClassName('handler_btn')
+
+// Задание 03
+const buttonX = document.querySelector('.screen-btn')
+
+// Задание 04
+const items1 = document.querySelectorAll('.other-items.percent')
+
+const items2 = document.querySelectorAll('.other-items.number')
+
+// Задание 05
+const inputScreens = document.querySelector('.rollback input')
+
+// Задание 06
+const spanRange = document.querySelector('.rollback .range-value')
+
+// Задание 07
+const total = document.getElementsByClassName('total-input')[0]
+const totalCount = document.getElementsByClassName('total-input')[1]
+const totalCountOther = document.getElementsByClassName('total-input')[2]
+const totalFullCount = document.getElementsByClassName('total-input')[3]
+const totalCountRollback = document.getElementsByClassName('total-input')[4]
+
+// Задание 08
+let screenBlock = document.querySelectorAll('.screen')
+
 const appData = {
   rollback: 10,
   screenPrice: 0,
@@ -104,37 +133,6 @@ const appData = {
 }
 
 appData.start()
-
-// Урок №9
-
-// Задание 01
-const newTitle = document.getElementsByTagName('h1');
-
-// Задание 02
-const buttons = document.getElementsByClassName('handler_btn')
-
-// Задание 03
-const buttonX = document.querySelector('.screen-btn')
-
-// Задание 04
-const items1 = document.querySelectorAll('.other-items.percent')
-
-const items2 = document.querySelectorAll('.other-items.number')
-
-// Задание 05
-const inputScreens = document.querySelector('.rollback input')
-
-// Задание 06
-const spanRange = document.querySelector('.rollback .range-value')
-
-// Задание 07
-  for (let i = 0; i < 5; i++) {
-    const inputTotal = document.getElementsByClassName('total-input')
-    console.log(inputTotal[i])
-  }
-
-  // Задание 08
-  let screenBlock = document.querySelectorAll('.screen')
 
   console.log(newTitle[0]);
   console.log(buttons);
