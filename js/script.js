@@ -6,7 +6,7 @@ const restBtn = document.getElementsByClassName('handler_btn')[1]
 const buttonPlus = document.querySelector('.screen-btn')
 const otherItemsPercent = document.querySelectorAll('.other-items.percent')
 const otherItemsNumber = document.querySelectorAll('.other-items.number')
-const inputScreens = document.querySelector('.rollback input')
+const inputRange = document.querySelector('.rollback input')
 const spanRange = document.querySelector('.rollback .range-value')
 const total = document.getElementsByClassName('total-input')[0]
 const totalCount = document.getElementsByClassName('total-input')[1]
@@ -17,7 +17,7 @@ const totalCountRollback = document.getElementsByClassName('total-input')[4]
 let screens = document.querySelectorAll('.screen')
 
 const appData = {
-  rollback: 10,
+  rollback: 0,
   screenPrice: 0,
   servicesPercent: {}, 
   servicesNumber: {}, 
@@ -25,6 +25,7 @@ const appData = {
   screens: [],
   adaptive: true,
   fullPrice: 0,
+  countInputs: 0,
   servicePricesPercent: 0,
   servicePricesNumber: 0,
   servicePercentPrice: 0,
@@ -33,6 +34,7 @@ const appData = {
     appData.addTitle()
     startBtn.addEventListener('click', appData.start)
     buttonPlus.addEventListener('click', appData.addScreenBlock)
+    appData.inputBlock()
   },
   addTitle: function () {
     document.title = title.textContent
@@ -43,16 +45,31 @@ const appData = {
       appData.addServices()
       appData.addPrices()
       // appData.getServicePercentPrices()
+      appData.inputBlock()
+      // appData.getServicePercentPrices()
 
       // appData.logger()
       appData.showResult()
     }
     
   },
+  inputBlock: function () {
+    spanRange.textContent = inputRange.value
+    inputRange.addEventListener('input', appData.inputBlock)
+    inputRange.addEventListener('range', appData.inputBlock)
+    appData.rollback = spanRange.textContent
+  },
+  rollbackRes: function () {
+    appData.rollback = +spanRange.textContent
+  
+  },
   showResult: function () {
     total.value = appData.screenPrice
     totalCountOther.value = appData.servicePricesPercent + appData.servicePricesNumber
     totalFullCount.value = appData.fullPrice
+    totalCountRollback.value = appData.servicePercentPrice
+    totalCount.value = appData.countInputs
+    console.log(appData.servicePercentPrice)
   },
   addScreens: function () {
     appData.isError = false;
@@ -61,7 +78,13 @@ const appData = {
       const select = screen.querySelector('select')
       const input = screen.querySelector('input')
       const selectName = select.options[select.selectedIndex].textContent
-      appData.screens.push({ id: index, name: selectName, price: +input.value * +select.value })
+      appData.screens.push({ id: index,
+        name: selectName, 
+        price: +input.value * +select.value, 
+        countInput: +input.value
+      })
+
+      console.log(input.value)
 
       for (let i = 0; i < screens.length; i++) {
         if (select.value === '' || input.value === '') {
@@ -100,6 +123,7 @@ const appData = {
   addPrices: function() {
     for (let screen of appData.screens) {
       appData.screenPrice += +screen.price
+      appData.countInputs += screen.countInput
     }
 
     for (let key in appData.servicesNumber) {
@@ -110,11 +134,11 @@ const appData = {
     }
 
     appData.fullPrice = +appData.screenPrice + appData.servicePricesNumber + appData.servicePricesPercent
-  },
 
-  getServicePercentPrices: function() {
     appData.servicePercentPrice = appData.fullPrice - (appData.fullPrice * (appData.rollback / 100))
   },
+
+  
   getRollbackMessage: function() {
     if (appData.fullPrice >= 30000) {
       return 'Даем скидку в 10%'
@@ -126,6 +150,11 @@ const appData = {
       return 'Что то пошло не так'
     }  
   },
+
+  // rollBack: function () {
+  
+  // },
+
 
   logger: function () {
     for (let key in appData) {
@@ -144,5 +173,7 @@ appData.init()
   // console.log(items1);
   // console.log(items2);
   // console.log(inputScreens);
-  // console.log(spanRange);
+  console.log(spanRange);
+  console.log(inputRange);
+  console.log(appData.rollback)
   // console.log(screens);
