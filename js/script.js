@@ -36,9 +36,9 @@ const appData = {
   init: function () {
     this.addTitle();
     this.addRollback();
-    startBtn.addEventListener("click", this.start.bind(appData));
-    buttonPlus.addEventListener("click", this.addScreensBlock.bind(appData));
-    resetBtn.addEventListener("click", this.reset.bind(appData));
+    startBtn.addEventListener("click", this.start.bind(this));
+    buttonPlus.addEventListener("click", this.addScreensBlock.bind(this));
+    resetBtn.addEventListener("click", this.reset.bind(this));
     this.addScreens();
   },
   addTitle: function () {
